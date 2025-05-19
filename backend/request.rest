@@ -1,0 +1,131 @@
+@baseUrl = http://localhost:5000
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDc2NzU5MTUsImV4cCI6MTc0NzY3NjA5NX0.FBXcS9g9OoSzVl5g2NSD9_DWlJCv5EzFnUaTMju9mHA
+
+// ========================
+// 🔐 AUTH (Login & Register)
+// ========================
+
+### 🔐 Login
+POST {{baseUrl}}/users/login
+Content-Type: application/json
+
+{
+"username": "admin",
+"password": "admin123"
+}
+
+
+### 📝 Register
+POST {{baseUrl}}/users/register
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "email": "admin@example.com",
+  "password": "admin123",
+  "role": "admin"
+}
+
+
+### 🚪 Logout (butuh token)
+POST {{baseUrl}}/users/logout
+Authorization: Bearer {{accessToken}}
+
+// ========================
+// 👥 USERS
+// ========================
+
+### 📋 Get semua user
+GET {{baseUrl}}/users
+
+### 🔍 Get user by ID
+GET {{baseUrl}}/users/1
+
+### ✏️ Update user
+PUT {{baseUrl}}/users/1
+Content-Type: application/json
+
+{
+"username": "updateduser",
+"email": "updateduser@example.com",
+"password": "newpassword",
+"role": "pasien"
+}
+
+### 🗑️ Delete user
+DELETE {{baseUrl}}/users/1
+
+// ========================
+// 🏥 LAYANAN
+// ========================
+
+### 📋 Get semua layanan
+GET {{baseUrl}}/layanan
+Authorization: Bearer {{accessToken}}
+
+### 🔍 Get layanan by ID
+GET {{baseUrl}}/layanan/1
+Authorization: Bearer {{accessToken}}
+
+### ➕ Tambah layanan (admin only)
+POST {{baseUrl}}/layanan
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+"nama_layanan": "Konsultasi Umum",
+"deskripsi": "Layanan konsultasi umum dengan dokter",
+"durasi_layanan": 20
+}
+
+### ✏️ Update layanan (admin only)
+PUT {{baseUrl}}/layanan/1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+"nama_layanan": "Konsultasi Gigi",
+"deskripsi": "Layanan konsultasi dokter gigi",
+"durasi_layanan": 30
+}
+
+### 🗑️ Hapus layanan (admin only)
+DELETE {{baseUrl}}/layanan/1
+Authorization: Bearer {{accessToken}}
+
+// ========================
+// 🧾 ANTRIAN
+// ========================
+
+### 📋 Get semua antrian
+GET {{baseUrl}}/antrian
+Authorization: Bearer {{accessToken}}
+
+### 🔍 Get antrian by ID
+GET {{baseUrl}}/antrian/1
+Authorization: Bearer {{accessToken}}
+
+### ➕ Tambah antrian
+POST {{baseUrl}}/antrian
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+"user_id": 1,
+"layanan_id": 1,
+"keterangan": "2025-05-20T08:00:00.000Z",
+"status": "menunggu"
+}
+
+### ✏️ Update antrian (admin only)
+PUT {{baseUrl}}/antrian/1
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+"status": "dipanggil"
+}
+
+### 🗑️ Hapus antrian (admin only)
+DELETE {{baseUrl}}/antrian/1
+Authorization: Bearer {{accessToken}}
