@@ -1,6 +1,4 @@
 import express from "express";
-import { upload } from "../controller/layananController.js";
-
 import {
   getLayanan,
   createLayanan,
