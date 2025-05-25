@@ -10,9 +10,9 @@ steps:
     args:
       - run
       - deploy
-      - be-layanan-rs"]
+      - be-layanan-rs
       - --image
-      - gcr.io/$PROJECT_ID/be-layanan-rs"]
+      - gcr.io/$PROJECT_ID/be-layanan-rs
       - --timeout
       - 1000s
       - --port
