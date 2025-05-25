@@ -5,12 +5,14 @@ env_variables:
   NODE_ENV: 'production'
 
 handlers:
-  - url: /
+  # Tangani file statis dulu
+  - url: /(.*\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|json))
+    static_files: build/\1
+    upload: build/.*
+
+  # Tangani semua route lainnya (SPA fallback)
+  - url: /.*
     static_files: build/index.html
     upload: build/index.html
-
-  - url: /(.*)
-    static_files: build/\1
-    upload: build/(.*)
 
 default_expiration: "1h"
