@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utils";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";  // tambahkan Link di sini
 import "../styles/loginPage.css";
 
 const Login = () => {
