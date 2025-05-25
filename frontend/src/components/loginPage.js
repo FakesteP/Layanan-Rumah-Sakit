@@ -46,7 +46,11 @@ const Login = () => {
         </div>
         <h2>Login to Your Account</h2>
         {message && (
-          <p className={`login-message ${messageType === "success" ? "success" : "error"}`}>
+          <p
+            className={`login-message ${
+              messageType === "success" ? "success" : "error"
+            }`}
+          >
             {message}
           </p>
         )}
@@ -73,7 +77,7 @@ const Login = () => {
         </form>
         <div className="login-footer">
           <span>Belum punya akun?</span>
-          <a href="/register">Register</a>
+          <Link to="/register">Register</Link>
         </div>
       </div>
     </div>
