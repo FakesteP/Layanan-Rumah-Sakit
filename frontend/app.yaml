@@ -1,5 +1,5 @@
 runtime: nodejs20
-service: Layanan-Rumah-Sakit
+service: layanan-rumah-sakit
 instance_class: F1
 
 handlers:
