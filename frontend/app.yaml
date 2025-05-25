@@ -1,6 +1,8 @@
 runtime: nodejs20
 service: layanan-rumah-sakit
 instance_class: F1
+env_variables:
+  NODE_ENV: 'production'
 
 handlers:
   - url: /
