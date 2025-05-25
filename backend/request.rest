@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:5000
+@baseUrl = https://be-layanan-rs-1061342868557.us-central1.run.app
 @accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwaXNAZ21haWwuY29tIiwidXNlcm5hbWUiOiJwaXMiLCJyb2xlIjoicGFzaWVuIiwiaWF0IjoxNzQ4MDE3NTI3LCJleHAiOjE3NDgwMTkzMjd9.WKRqc1vIQUDWXvvENVH9ix6jerTQTmNUOJWmJySn0T8
 // ========================
 // 🔐 AUTH (Login & Register)
