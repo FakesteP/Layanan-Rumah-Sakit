@@ -1,71 +1,4 @@
 import Layanan from "../model/layananModel.js";
-import multer from "multer";
-import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-import fs from "fs";
-
-// Pastikan folder uploads/ selalu ada
-const uploadDir = path.resolve("uploads");
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-// Ekstensi gambar yang diizinkan
-const IMAGE_TYPES = /jpeg|jpg|png|gif/i;
-
-const storage = multer.diskStorage({
-  destination: (_req, _file, cb) => cb(null, uploadDir),
-  filename: (_req, file, cb) => {
-    const ext = path.extname(file.originalname).toLowerCase();
-    const unique = `${Date.now()}-${Math.round(Math.random() * 1e9)}${ext}`;
-    cb(null, unique);
-  },
-});
-
-const fileFilter = (_req, file, cb) => {
-  const ext = path.extname(file.originalname).toLowerCase();
-  if (IMAGE_TYPES.test(ext)) return cb(null, true);
-  cb(new Error("Hanya file gambar (jpg, jpeg, png, gif) yang diizinkan"));
-};
-
-export const uploadImage = multer({
-  storage,
-  limits: { fileSize: 2 * 1024 * 1024 }, // 2 MB
-  fileFilter,
-});
-
-// // Untuk path absolute folder upload
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
-
-// // Konfigurasi storage multer
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, path.join(__dirname, "../../frontend/public/uploads"));
-//   },
-//   filename: (req, file, cb) => {
-//     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-//     const ext = path.extname(file.originalname);
-//     cb(null, uniqueSuffix + ext);
-//   },
-// });
-
-// // Filter hanya gambar
-// const fileFilter = (req, file, cb) => {
-//   if (file.mimetype.startsWith("image/")) {
-//     cb(null, true);
-//   } else {
-//     cb(new Error("Hanya file gambar yang diperbolehkan!"), false);
-//   }
-// };
-
-// // Inisialisasi upload
-// const upload = multer({
-//   storage,
-//   fileFilter,
-//   limits: { fileSize: 2 * 1024 * 1024 }, // 2MB
-// });
 
 const getLayanan = async (req, res) => {
   try {
@@ -95,7 +28,7 @@ const createLayanan = async (req, res) => {
     const { nama_layanan, deskripsi, durasi_layanan } = req.body;
     let imageUrl = req.body.image || null;
     if (req.file) {
-      imageUrl = req.file.filename; // hanya nama file
+      imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename};`
     } else if (!imageUrl) {
       imageUrl = "default";
     }

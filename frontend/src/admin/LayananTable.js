@@ -132,7 +132,7 @@ export default function LayananTable() {
                 <td>
                   {item.gambar ? (
                     <img
-                      src={`../uploads/${item.gambar}`}
+                      src={`${item.gambar}`}
                       alt={item.nama_layanan}
                       style={{
                         width: 48,

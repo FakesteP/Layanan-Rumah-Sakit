@@ -9,7 +9,6 @@ import {
 } from "../controller/antrianController.js";
 import { verifyToken } from "../middleware/verifyToken.js";
 import { isAdmin } from "../middleware/isAdmin.js";
-
 const router = express.Router();
 router.get("/riwayat", verifyToken, getAntrianByUserId);
 router.get("/", verifyToken, getAntrian);

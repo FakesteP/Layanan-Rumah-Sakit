@@ -34,7 +34,7 @@ app.use(express.json());
 app.use("/antrian", antrianRoute);
 app.use("/layanan", layananRoute);
 app.use("/users", userRoute);
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
+app.use('/uploads', express.static('uploads'));
 
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok", message: "Server is running" });
