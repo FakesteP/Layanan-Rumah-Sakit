@@ -58,5 +58,3 @@ Base URL: `/antrian`
 - Upload gambar pada layanan menggunakan middleware `uploadImage.single("gambar")` yang menerima file dengan key `gambar`.
 
 ---
-
-Kalau kamu mau aku bantu buatkan contoh request dengan `curl` atau Postman Collection juga, tinggal bilang ya!
