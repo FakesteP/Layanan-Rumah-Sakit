@@ -13,9 +13,6 @@ Content-Type: application/json
 "password": "123456"
 }
 
-
-
-
 ### 📝 Register
 POST {{baseUrl}}/users/register
 Content-Type: application/json
