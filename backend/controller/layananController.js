@@ -5,10 +5,6 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import fs from "fs";
 
-import multer from "multer";
-import fs from "fs";
-import path from "path";
-
 // Pastikan folder uploads/ selalu ada
 const uploadDir = path.resolve("uploads");
 if (!fs.existsSync(uploadDir)) {
