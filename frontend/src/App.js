@@ -6,7 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Login from "./components/loginPage";
-import Register from "./components/registerPage";
+import RegisterForm from "./components/registerPage";
 import DashboardPage from "./components/dashboardPage";
 import PrivateRoute from "./components/privateRoute";
 import LayananDetail from "./pages/layananDetail";
@@ -26,7 +26,7 @@ function App() {
         {/* Default route redirect ke /login */}
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<RegisterForm />} />
         <Route
           path="/dashboard"
           element={
