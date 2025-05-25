@@ -11,21 +11,22 @@ import { fileURLToPath } from "url";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ✅ Konfigurasi CORS
-const allowedOrigins = [process.env.ORIGIN];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://layanan-rumah-sakit-dot-b-01-450713.uc.r.appspot.com"
+];
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
 
 app.use(cookieParser());
 app.use(express.json());
