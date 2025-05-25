@@ -1,4 +1,6 @@
 import express from "express";
+import { upload } from "../controller/layananController.js";
+
 import {
   getLayanan,
   createLayanan,
@@ -12,8 +14,14 @@ import { isAdmin } from "../middleware/isAdmin.js";
 const router = express.Router();
 router.get("/", verifyToken, getLayanan);
 router.get("/:id", verifyToken, getLayananById);
-router.post("/", verifyToken, isAdmin, createLayanan);
-router.put("/:id", verifyToken, isAdmin, updateLayanan);
+router.post("/", verifyToken, isAdmin, upload.single("gambar"), createLayanan);
+router.put(
+  "/:id",
+  verifyToken,
+  isAdmin,
+  upload.single("gambar"),
+  updateLayanan
+);
 router.delete("/:id", verifyToken, isAdmin, deleteLayanan);
 
 export default router;

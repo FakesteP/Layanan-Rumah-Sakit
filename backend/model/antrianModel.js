@@ -10,7 +10,7 @@ const Antrian = db.define(
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-    },    
+    },
     user_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -21,7 +21,10 @@ const Antrian = db.define(
       allowNull: false,
       references: { model: "layanan", key: "id" },
     },
-    keterangan: { type: Sequelize.DATE, allowNull: false },
+    keluhan: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     status: {
       type: Sequelize.ENUM("menunggu", "dipanggil", "selesai", "batal"),
       defaultValue: "menunggu",
@@ -34,7 +37,12 @@ const Antrian = db.define(
   }
 );
 
+// Relasi ke Layanan
 Layanan.hasMany(Antrian, { foreignKey: "layanan_id" });
 Antrian.belongsTo(Layanan, { foreignKey: "layanan_id" });
+
+// ✅ Tambahkan relasi ke User
+User.hasMany(Antrian, { foreignKey: "user_id" });
+Antrian.belongsTo(User, { foreignKey: "user_id" });
 
 export default Antrian;

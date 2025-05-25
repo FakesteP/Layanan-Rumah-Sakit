@@ -12,6 +12,7 @@ const Layanan = db.define(
     nama_layanan: { type: Sequelize.STRING, allowNull: false },
     deskripsi: { type: Sequelize.TEXT },
     durasi_layanan: { type: Sequelize.INTEGER },
+    gambar: { type: Sequelize.STRING },
   },
   {
     freezeTableName: true,

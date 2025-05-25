@@ -1,6 +1,5 @@
 @baseUrl = http://localhost:5000
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDc2NzU5MTUsImV4cCI6MTc0NzY3NjA5NX0.FBXcS9g9OoSzVl5g2NSD9_DWlJCv5EzFnUaTMju9mHA
-
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwaXNAZ21haWwuY29tIiwidXNlcm5hbWUiOiJwaXMiLCJyb2xlIjoicGFzaWVuIiwiaWF0IjoxNzQ4MDE3NTI3LCJleHAiOjE3NDgwMTkzMjd9.WKRqc1vIQUDWXvvENVH9ix6jerTQTmNUOJWmJySn0T8
 // ========================
 // 🔐 AUTH (Login & Register)
 // ========================
@@ -10,9 +9,11 @@ POST {{baseUrl}}/users/login
 Content-Type: application/json
 
 {
-"username": "admin",
-"password": "admin123"
+"username": "pis",
+"password": "123456"
 }
+
+
 
 
 ### 📝 Register
@@ -22,13 +23,17 @@ Content-Type: application/json
 {
   "username": "admin",
   "email": "admin@example.com",
-  "password": "admin123",
+  "password": "admin",
   "role": "admin"
 }
 
 
 ### 🚪 Logout (butuh token)
 POST {{baseUrl}}/users/logout
+Authorization: Bearer {{accessToken}}
+
+### 
+GET {{baseUrl}}/users/me
 Authorization: Bearer {{accessToken}}
 
 // ========================
@@ -128,4 +133,8 @@ Content-Type: application/json
 
 ### 🗑️ Hapus antrian (admin only)
 DELETE {{baseUrl}}/antrian/1
+Authorization: Bearer {{accessToken}}
+
+### ========================
+GET {{baseUrl}}/users/profile
 Authorization: Bearer {{accessToken}}

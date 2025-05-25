@@ -1,13 +1,31 @@
 import Antrian from "../model/antrianModel.js";
+import User from "../model/userModel.js";
+import Layanan from "../model/layananModel.js";
 
 const getAntrian = async (req, res) => {
   try {
-    const response = await Antrian.findAll();
-    res.status(200).json(response);
+    const antrian = await Antrian.findAll({
+      attributes: ['id', 'keluhan', 'status', 'tanggal_dibuat', 'user_id', 'layanan_id'],
+      include: [
+        {
+          model: User,
+          attributes: ["id", "username"],
+        },
+        {
+          model: Layanan,
+          attributes: ["id", "nama_layanan"],  // pastikan ini sesuai dengan kolom sebenarnya
+        },
+      ],
+    });
+
+    console.log("Data antrian:", JSON.stringify(antrian, null, 2));
+
+    res.json(antrian);
   } catch (error) {
-    console.log(error.message);
+    res.status(500).json({ message: error.message });
   }
 };
+
 
 const getAntrianById = async (req, res) => {
   try {
@@ -54,4 +72,36 @@ const deleteAntrian = async (req, res) => {
   }
 };
 
-export { getAntrian, createAntrian, updateAntrian, deleteAntrian, getAntrianById };
+const getAntrianByUserId = async (req, res) => {
+  try {
+    const userId = req.userId; // <-- ini harus sesuai dengan middleware verifyToken
+
+    const antrian = await Antrian.findAll({
+      where: { user_id: userId },
+      attributes: ['id', 'keluhan', 'status', 'tanggal_dibuat'],
+      include: [
+        {
+          model: Layanan,
+          attributes: ['id', 'nama_layanan'],
+        },
+      ],
+      order: [['tanggal_dibuat', 'DESC']],
+    });
+
+    res.status(200).json(antrian);
+  } catch (error) {
+    console.error("Gagal mengambil riwayat antrian:", error);
+    res.status(500).json({ message: "Gagal mengambil riwayat antrian" });
+  }
+};
+
+
+
+export {
+  getAntrian,
+  createAntrian,
+  updateAntrian,
+  deleteAntrian,
+  getAntrianById,
+  getAntrianByUserId
+};

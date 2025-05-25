@@ -1,0 +1,86 @@
+.login-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eaf6ff 60%, #b1e0ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(26, 128, 199, 0.12);
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+}
+
+.login-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1a80c7;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.login-form input {
+  width: 90%;
+  padding: 0.8rem; /* Ubah padding kanan-kiri jadi 1.2rem */
+  margin-bottom: 1rem;
+  border: 1px solid #b1e0ff;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f6fbff;
+  transition: border 0.2s;
+}
+
+.login-form input:focus {
+  border: 1.5px solid #1a80c7;
+  outline: none;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: #1a80c7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-btn:hover {
+  background: #15639b;
+}
+
+.login-message {
+  color: #e74c3c;
+  margin-bottom: 1rem;
+}
+
+.login-footer {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.login-footer a {
+  color: #1a80c7;
+  margin-left: 0.3rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+.login-footer a:hover {
+  text-decoration: underline;
+}
+.login-message.success {
+  color: green;
+}
+
+.login-message.error {
+  color: red;
+}

@@ -136,7 +136,7 @@ const loginHandler = async (req, res) => {
       safeUserData,
       process.env.ACCESS_TOKEN_SECRET,
       {
-        expiresIn: "3m",
+        expiresIn: "30m",
       }
     );
 
@@ -193,6 +193,46 @@ const logout = async (req, res) => {
   res.clearCookie("refreshToken");
   return res.sendStatus(200);
 };
+
+const getMe = async (req, res) => {
+  try {
+    console.log("req.userId dari token:", req.userId); // Tambahkan ini
+    const user = await User.findOne({
+      where: { id: req.userId },
+      attributes: ["id", "username", "email", "role"],
+    });
+    console.log("User ditemukan:", user); // Tambahkan ini
+    if (!user) return res.status(404).json({ message: "User tidak ditemukan" });
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+export const changePasswordHandler = async (req, res) => {
+  const userId = req.userId; // GANTI INI, sebelumnya: req.user.id
+  const { currentPassword, newPassword } = req.body;
+
+  try {
+    const user = await User.findByPk(userId);
+    if (!user) return res.status(404).json({ message: "User tidak ditemukan" });
+
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch)
+      return res.status(400).json({ message: "Password lama salah" });
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedPassword;
+    await user.save();
+
+    res.status(200).json({ message: "Password berhasil diubah" });
+  } catch (error) {
+    console.error("Gagal mengubah password:", error);
+    res.status(500).json({ message: "Terjadi kesalahan server" });
+  }
+};
+
+
 export {
   getUsers,
   getUserById,
@@ -201,4 +241,5 @@ export {
   deleteUser,
   loginHandler,
   logout,
+  getMe,
 };

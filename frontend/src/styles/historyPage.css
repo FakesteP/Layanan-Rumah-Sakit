@@ -1,0 +1,85 @@
+/* Header khusus History Page */
+.history-header {
+  background: linear-gradient(to right, #e3f2fd, #ffffff);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Footer khusus History Page */
+.history-footer {
+  background-color: #f8f9fa;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #eee;
+  margin-top: 2rem;
+}
+
+/* History List Styling */
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+.history-item {
+  background: #ffffff;
+  border: 1px solid #e3f2fd;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-left h4 {
+  margin: 0 0 0.25rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.history-left p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.history-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.status-badge {
+  padding: 0.4rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.status-badge.diproses {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.selesai {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-badge.dibatalkan {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-badge.menunggu {
+  background-color: #cce5ff;
+  color: #004085;
+}
