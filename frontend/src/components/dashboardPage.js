@@ -20,16 +20,16 @@ const DashboardPage = () => {
   const [doctors, setDoctors] = useState([
     {
       id: 1,
-      name: "Dr. Sarah Johnson",
+      name: "Dr. Haqi Jamaludin",
       specialty: "Kardiologi",
-      image: "/images/doctor1.jpg",
+      image: "/images/haqi.jpg",
       available: true,
     },
     {
       id: 2,
-      name: "Dr. Michael Chen",
+      name: "Dr. Fathahillah Chen",
       specialty: "Neurologi",
-      image: "/images/doctor2.jpg",
+      image: "/images/dokter.png",
       available: true,
     },
   ]);
