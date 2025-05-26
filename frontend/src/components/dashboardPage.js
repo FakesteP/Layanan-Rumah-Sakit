@@ -345,7 +345,7 @@ const DashboardPage = () => {
                     <div className="card-media">
                       {item.gambar ? (
                         <img
-                          src={`/uploads/${item.gambar}`}
+                          src={`${item.gambar}`}
                           alt={item.nama_layanan}
                           loading="lazy"
                           className="card-image"
